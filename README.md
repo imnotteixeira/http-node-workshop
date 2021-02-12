@@ -43,3 +43,6 @@
 - [ ] Node.js in practice
   - [ ] Express.js
   - [ ] Mongoose
+  - [ ] How is NIJobs organized?
+    - [ ] Backend
+    - [ ] Frontend - Nice plug for next workshop, not actually explaining details >:)

@@ -25,6 +25,10 @@ h3 {
     margin-bottom: 20px;
 }
 
+.remark-slide-content {
+    padding: 4em;
+}
+
 .remark-slide-content h1 {
     font-size: 3em;
 }
@@ -35,6 +39,10 @@ h3 {
 
 .remark-slide-content h3 {
     font-size: 1.6em;
+}
+
+.remark-slide-content pre {
+    white-space: pre-wrap;
 }
 
 .remark-code,
@@ -106,7 +114,6 @@ img {
 .inverse {
     background: var(--color-background);
     color: var(--color-inverse-text);
-    text-shadow: 0 0 20px #333;
 }
 
 .inverse h1 {
@@ -131,15 +138,6 @@ code {
     -web-border-radius: 5px;
     /* background: #e7e8e2; */
     border-radius: 5px;
-}
-
-#slideshow .slide .content code {
-    font-size: 0.8em;
-}
-
-#slideshow .slide .content pre code {
-    font-size: 0.9em;
-    padding: 15px;
 }
 
 li p {
