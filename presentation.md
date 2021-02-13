@@ -623,4 +623,88 @@ for(const key of obj) {
 
 ---
 
-# What sorcery is *this* 
+# What sorcery is *this*
+
+The `this` keyword generally refers to the current context of execution. It is implicitly passed when calling functions.
+
+* Inside a function, it refers to the context of where the function was called from, unless otherwise specified.
+
+* Under normal circumstances, `this` will refer to the global object in Node.js (equivalent to the `window` object in the browser)
+* If a function is an object property, `this` will refer to the object itself. This is useful to have fields that derive from others.
+
+.center.dense[
+```javascript
+const person = {
+    name: "John",
+    surname: "Smith",
+    getFullName: function() { return this.name + " " + this.surname; }
+}
+```
+]
+
+---
+
+# What sorcery is *this*
+
+Similarly to the objects' behavior, inside a class, `this` corresponds to the class instance. After all, Classes are glorified objects.
+
+.center[
+```javascript
+class Person {
+    constructor(name, surname) {
+        this.name = name;
+        this.surname = surname;
+    }
+    
+    getFullName() {
+        return this.name + " " + this.surname;
+    }
+}
+```
+]
+
+---
+
+# What's this, Mr. Arrow?
+
+The biggest difference between normal functions and arrow functions is that arrow functions do not bind their own `this`.
+
+Instead, they inherit the one from the parent scope, which is called "lexical scoping". This makes arrow functions to be a great choice in some scenarios but a very bad one in others.
+
+This is why you cannot use arrow functions in class methods, for example.
+
+---
+
+# Super Example
+
+.center[
+```javascript
+class Hero {
+  constructor() {
+    this.powerName = "Super Punch"
+    this.buildSuperPower()
+  }
+
+  printPowerName() {
+    console.log("this", this)
+    console.info(this.powerName + " is ready!")
+  }
+
+  buildSuperPower() {
+    console.info("Initiated Timer");
+    setTimeout(this.printPowerName, 500)
+    //setTimeout(() => this.printPowerName(), 500)
+  }
+}
+
+const hero = new Hero()
+```
+]
+
+---
+
+# Super Example
+The code as is (with L14 being executed) will print "undefined is ready!" since the this that is passed to the printPowerName is the context of the setTimeout upon invocation.
+
+If an arrow function is used instead, the this corresponds to the context of where the function is defined, which is the context of buildSuperPower, which in turn will be the Hero instance. In this case, the print is correct: "Super Punch is ready!"
+

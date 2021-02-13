@@ -24,15 +24,15 @@
 - [ ] Javascript theory
   - [x] Functions, variables and scopes
     - [x] const vs let (vs var) 
-  - [ ] Objects
-  - [ ] Arrays
-    - [ ] Array methods
-      - [ ] .filter
-      - [ ] .map
-      - [ ] .reduce
-  - [ ] Object array iteration (for..in vs for..of)
-  - [ ] The magic this
-    - [ ] Regular functions vs Arrow Functions
+  - [x] Objects
+  - [x] Arrays
+    - [x] Array methods
+      - [x] .filter
+      - [x] .map
+      - [x] .reduce
+  - [x] Object array iteration (for..in vs for..of)
+  - [x] The magic this
+    - [x] Regular functions vs Arrow Functions
   - [ ] Promises
     - [ ] Async/Await syntax sugar
   - [ ] Node.js Specifics
