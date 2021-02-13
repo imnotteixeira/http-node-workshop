@@ -4,12 +4,12 @@
 
 ### Part 1
 
-- [ ] HTTP protocol (request-response overview -> really high level)
-- [ ] RPC vs REST (really high level as well)
-  - [ ] Using HTTP Status and URIs to add meaning to HTTP
-- [ ] CORS
-  - [ ] What is it
-  - [ ] How to control it
+- [x] HTTP protocol (request-response overview -> really high level)
+- [x] RPC vs REST (really high level as well)
+  - [x] Using HTTP Status and URIs to add meaning to HTTP
+- [x] CORS
+  - [x] What is it
+  - [x] How to control it
 - [ ] Web architecture (what happens since the user enters a URL in the browser until it receives a web page?)
 - [ ] Technologies
   - [ ] There are multiple alterantives (Node.js, Python, Java, C#, and on, and on, and on...)
