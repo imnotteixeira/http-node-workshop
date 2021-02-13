@@ -127,6 +127,15 @@ img {
 .flex-columns {
     display: flex;
     gap: 1em;
+    flex-direction: row;
+}
+
+.flex-columns-center {
+    display: flex;
+    gap: 1em;
+    flex-direction: row;
+    justify-content: center;
+
 }
 
 .height-limit-100 {
@@ -194,6 +203,8 @@ code {
     -web-border-radius: 5px;
     /* background: #e7e8e2; */
     border-radius: 5px;
+}
+pre > code {
     padding: 2em !important;
 }
 

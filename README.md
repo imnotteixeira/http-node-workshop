@@ -22,8 +22,8 @@
 ---
 
 - [ ] Javascript theory
-  - [ ] Functions, variables and scopes
-    - [ ] const vs let (vs var) 
+  - [x] Functions, variables and scopes
+    - [x] const vs let (vs var) 
   - [ ] Objects
   - [ ] Arrays
     - [ ] Array methods

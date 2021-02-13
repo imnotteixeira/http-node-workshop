@@ -390,11 +390,237 @@ class: center, middle, inverse
 
 # Variables
 
-TODO
--declaration
-initialization
-const vs let
-funcs can be vars
-scopes
-functions (arrow vs normal)
+.center[
+```javascript
+let foo; // declared but not initialized - its value is undefined
+let bar = 5 // declared and initialized
+const baz = "buzz" // also declared and initialized, but constant
+```
+]
 
+---
+
+# const vs let
+
+Both `const` and `let` serve to declare variables but there are some differences:
+
+* `let` allows the variable to be re-declared, that is, its reference or value can change
+* `const` prevents this re-declaration, but it .highlight[does not] prevent mutation of non-primitive types such as Array or Object
+
+.center[
+```javascript
+const a = [1]
+console.log(a) // [1]
+a.push(2)
+console.log(a) // [1, 2]
+
+a = [1,2,3] // Error!
+```
+]
+
+To prevent mutation, use `Object.freeze()`
+
+
+---
+
+# Functions
+
+<div class="flex-columns-center">
+<div>
+.center[Normal Syntax]
+.sparse[
+```javascript
+function foo(bar) {
+    return bar === "baz";
+}
+```
+]
+</div>
+<div>
+.center[Arrow Function Syntax]
+.sparse[
+```javascript
+const foo = (bar) => bar === "baz";
+```
+]
+.sparse[
+```javascript
+const foo = (bar) => {
+    // Don't do this, it's just to show 
+    // a multiline version
+    const ret = bar === "baz";
+    return ret;
+}
+```
+]
+</div>
+</div>
+
+Functions can be variables too! They are .highlight[first-class citizens]. 
+
+They can be passed as parameters, can be returned from other functions, and can be tested for equality.
+
+---
+
+# Scopes
+
+.center[
+```javascript
+const a = "global"
+
+function func() {
+    console.log(a) // global
+    
+    const a = "function";
+    console.log(a) // function
+    
+    if(a) {
+        const a = "block";
+        console.log(a) // block
+    }
+    
+    console.log(a) // function
+}
+
+console.log(a) // global
+```
+]
+
+---
+
+# Hey! But I've seen some vars around!
+
+In fact, before ES6, variable declaration used to be done with the `var` keyword. That is no longer the standard way and is discouraged, since it had some memory leak problems.
+
+Also, `var` is .highlight[function scoped], which means that the declaration would attach to the nearest function scope, unlike `let` or `const`, which belong to their blocks (ifs, loops, etc)
+
+---
+
+# Objects
+
+In JavaScript, everything that is not a primitive type (string, number, boolean, etc) is an .highlight[object]. Even arrays and functions are objects.
+
+Objects are a map-like structure that stores keys and values. The keys can be strings or numbers, but values can be whatever type you want.
+
+.center[
+```javascript
+const obj = {
+    myKey1: 1
+    key2: {
+        innerKey: true
+    }
+}
+
+obj.key2.innerKey = false;
+obj["myKey1"]++
+```
+]
+
+---
+
+# Arrays
+
+Arrays are a special kind of objects, which contain a list of elements of any type. You can mix types in a single array, although you probably shouldn't.
+
+.dense[
+```javascript
+const arr = [1,2,3,4];
+const evenNumbers = arr.filter(num => num % 2 === 0); 
+// [2,4]
+```
+]
+
+.dense[
+```javascript
+const numberLabels = arr.map(num => `${num}-${getNumberLabel(num)}`); 
+// ["1-One", "2-Two", "3-Three", "4-Four"] (assuming we have a function getNumberLabel that returns a label for a given number)
+```
+]
+
+.dense[
+```javascript
+const sum = arr.reduce((total, current) => total + current, 0); 
+// 10
+```
+]
+
+---
+
+# Array methods
+
+These functions always return a .highlight[new] array (or value, in case of `.reduce`). They never mutate the original object, unless you specifically do it in the body of these functions (which you shouldn't)
+
+You can combine these utilities and create a pipeline of changes for more complex stuff.
+
+There are more functions to use such as `.find()`, `.every()` or `.join()`, the MDN docs are a good start to understand them.
+
+---
+
+# Iterating Objects and Arrays
+
+Apart from the classic `for(let i = 0; i < arr.length; i++)`, you have the `for..in` and `for..of` loops.
+<div class="flex-columns-center">
+<div>
+.dense[
+```javascript
+const arr = ["foo", "bar", "baz"];
+for(const key in arr) {
+    console.log(key)
+}
+// 0
+// 1
+// 2
+```
+]
+</div>
+
+<div>
+.dense[
+```javascript
+const arr = ["foo", "bar", "baz"];
+for(const key of arr) {
+    console.log(key)
+}
+// "foo"
+// "bar"
+// "baz"
+```
+]
+</div>
+</div>
+
+---
+
+# Iterating objects
+
+<div class="flex-columns-center">
+<div>
+.dense[
+```javascript
+const obj = {foo: true, bar: false};
+for(const key in obj) {
+    console.log(key)
+}
+// "foo"
+// "bar"
+```
+]
+</div>
+
+<div>
+.dense[
+```javascript
+const obj = {foo: true, bar: false};
+for(const key of obj) {
+    console.log(key)
+}
+// true
+// false
+```
+]
+</div>
+</div>
+
+---
+
+# What sorcery is *this* 
