@@ -257,3 +257,144 @@ Due to this, you **cannot** make requests to services in different locations by 
 ![](./img/cors-error.png)
 ![](./img/cors-req-headers.png)
 ![](./img/cors-res-headers.png)
+
+---
+
+# From browser to server and back
+
+What happens when you type https://ni.fe.up.pt into the url bar on your browser?
+
+1. It will try to find the corresponding IP (check cache).
+1. If no mapping found, query DNS servers
+1. Initiate a TCP connection with the server
+1. Send an .dense[`HTTPS GET /`] request (sending additional informational headers along)
+1. The server will receive the request and handle it (in this case generate an HTML page --- Server Side Rendering)
+1. The Server sends the HTTP response with headers and HTML
+1. Your browser renders NI's website
+
+---
+
+# HTTP web server applications
+
+> The server will receive the request and handle it
+
+Web applications are simply programs that listen for requests and send responses, using the HTTP protocol.
+
+Almost any language has its version of an http server module.
+
+The most common are Java, Python, C# and Node.js.
+
+Today, we'll look specifically into .highlight[Node.js]
+
+---
+
+class: center, middle, inverse
+
+# Node.js
+### Almost Heaven
+
+---
+
+class: center, middle, inverse
+
+# Node.js
+## Almost Heaven
+### West Virginia
+
+---
+
+class: center, middle, inverse
+
+# Node.js
+## Almost Heaven
+### ~~West Virginia~~
+### JavaScript on the server!
+
+# 
+
+# 
+
+I am running out of good subtitles, really
+
+---
+
+# Node.js
+
+.highlight[Node.js] is a server-side language that uses V8 JavaScript engine, which means you can use (almost) the same language you have to use on the browser, but now on the server as well!
+
+.center[
+```javascript
+const http = require('http');
+
+const server = http.createServer(function (req, res) {
+    res.write('Hello World!'); // write a response to the client
+    res.end(); // end the response
+});
+
+server.listen(80); //the server listens on port 80 (HTTP default)
+```
+]
+
+---
+
+# Node.js
+
+.center[
+```javascript
+const server = http.createServer(function (req, res) {
+    const endpoint = request.url;
+
+    if(endpoint === "/") processHomepage(req, res);
+    if(endpoint === "/about") processAboutPage(req, res);
+    if(endpoint === "/store") processStorePage(req, res);
+    (...)
+});
+```
+]
+
+---
+
+# Node.js + Express.js = 🤍
+
+Express.js is a web framework that abstracts some of the work involved in creating a web server in Node.js.
+
+.center[
+```javascript
+const express = require('express')
+const app = express()
+const port = 80
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
+```
+]
+
+---
+class: center, middle, inverse
+
+# Wait, did you say JS?
+## JS means .highlight[JavaScript] and although it has "Java" in the name, it has NOTHING to do with it, apart from also being a programming language
+
+---
+class: center, middle, inverse
+
+# JavaScript Theory
+## Because you can't hate what you don't know
+
+---
+
+# Variables
+
+TODO
+-declaration
+initialization
+const vs let
+funcs can be vars
+scopes
+functions (arrow vs normal)
+

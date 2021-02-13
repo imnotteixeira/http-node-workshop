@@ -10,15 +10,15 @@
 - [x] CORS
   - [x] What is it
   - [x] How to control it
-- [ ] Web architecture (what happens since the user enters a URL in the browser until it receives a web page?)
-- [ ] Technologies
-  - [ ] There are multiple alterantives (Node.js, Python, Java, C#, and on, and on, and on...)
+- [x] Web architecture (what happens since the user enters a URL in the browser until it receives a web page?)
+- [x] Technologies
+  - [x] There are multiple alterantives (Node.js, Python, Java, C#, and on, and on, and on...)
   
 ### Part 2
 
 - Start with a teaser:
-  - [ ] Node.js HTTP module
-  - [ ] Using Express to abstract HTTP applications
+  - [x] Node.js HTTP module
+  - [x] Using Express to abstract HTTP applications
 ---
 
 - [ ] Javascript theory

@@ -15,8 +15,13 @@ h1 {
     border-radius: 10px;
 }
 
-h1 > del {
-    color: initial;
+h1 > del,
+h2 > del,
+h3 > del,
+h4 > del,
+h5 > del,
+h6 > del {
+    color: inherit;
 }
 
 h1,
