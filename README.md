@@ -16,8 +16,9 @@
   
 ### Part 2
 
-- [ ] Node.js HTTP module
-- [ ] Using Express to abstract HTTP applications
+- Start with a teaser:
+  - [ ] Node.js HTTP module
+  - [ ] Using Express to abstract HTTP applications
 ---
 
 - [ ] Javascript theory
