@@ -33,12 +33,12 @@
   - [x] Object array iteration (for..in vs for..of)
   - [x] The magic this
     - [x] Regular functions vs Arrow Functions
-  - [ ] Promises
-    - [ ] Async/Await syntax sugar
+  - [x] Promises
+    - [x] Async/Await syntax sugar
   - [ ] Node.js Specifics
-    - [ ] npm
-    - [ ] user defined Modules
-    - [ ] Common modules (show advent of code exxample - read file and parse lines with promises and array methods)
+    - [x] npm
+    - [x] user defined Modules
+    - [x] Common modules (show advent of code exxample - read file and parse lines with promises and array methods)
       - fs
       - path
 - [ ] Node.js in practice

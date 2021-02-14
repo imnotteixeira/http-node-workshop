@@ -556,7 +556,7 @@ There are more functions to use such as `.find()`, `.every()` or `.join()`, the 
 
 ---
 
-# Iterating Objects and Arrays
+# Iterating Arrays
 
 Apart from the classic `for(let i = 0; i < arr.length; i++)`, you have the `for..in` and `for..of` loops.
 <div class="flex-columns-center">
@@ -591,7 +591,7 @@ for(const key of arr) {
 
 ---
 
-# Iterating objects
+# Iterating Objects
 
 <div class="flex-columns-center">
 <div>
@@ -623,7 +623,7 @@ for(const key of obj) {
 
 ---
 
-# What sorcery is *this*
+# What sorcery is *this* ?
 
 The `this` keyword generally refers to the current context of execution. It is implicitly passed when calling functions.
 
@@ -644,7 +644,7 @@ const person = {
 
 ---
 
-# What sorcery is *this*
+# What sorcery is *this* ?
 
 Similarly to the objects' behavior, inside a class, `this` corresponds to the class instance. After all, Classes are glorified objects.
 
@@ -708,3 +708,174 @@ The code as is (with L14 being executed) will print "undefined is ready!" since 
 
 If an arrow function is used instead, the this corresponds to the context of where the function is defined, which is the context of buildSuperPower, which in turn will be the Hero instance. In this case, the print is correct: "Super Punch is ready!"
 
+---
+
+class: center, middle, inverse, small-images
+
+# This time the title is in the subtitle
+## I Promise
+
+---
+
+# Promises
+
+Imagine MIEIC's professors were JavaScript entities. Imagine you called the method `getGrades()`. It would obviously take too long, right?
+
+If only there was a way for you to do something else while they don't answer back... They could **promise** they would answer some time in the future, and you would go on your way, only to face another teacher that didn't have the grades ready...
+
+---
+
+# Promises
+
+Well, Promises are exactly that: Structures that eventually turn into data or error out. They have 3 possible states:
+
+* Pending: While not fulfilled or rejected
+* Fulfilled: When the work has finished, represents the result
+* Rejected: When some error occurred, represents the error
+
+.center[
+```javascript
+const sleep = (time) => new Promise((resolve) => {
+    setTimeout(()=>{resolve()}, time)
+})
+
+sleep(1000).then(() => {console.log("Time's up!")})
+
+console.log("I can't wait!"); // This will execute first
+```
+]
+
+---
+
+# Promises, but better
+
+## Async/Await Syntax
+
+```javascript
+const longFunction = () => new Promise((resolve, reject) => {
+    try {
+        const {result, error} = doSomeLongComputation();
+        if(error) return reject(error)
+
+        return resolve(result);
+
+    } catch (err) {
+        reject(err)
+    }
+})
+
+longFunction()
+    .then((value) => { console.log(value) })
+    .catch((err) => { console.error(err) })
+```
+
+---
+
+# Promises, but better
+
+## Async/Await Syntax
+
+```javascript
+const longFunction = async () => {
+   
+    const {result, error} = doSomeLongComputation();
+    if (error) throw error
+
+    return result;
+    
+})
+
+const someOtherFunction = async () => {
+    try {
+        const result = await longFunction();
+    } catch (err) {
+        console.error(err)
+    }
+} 
+```
+
+---
+
+class: center, middle, inverse
+
+# Node.js specifics
+## This introduces the next module
+
+# 
+
+# 
+
+--
+
+#### You'll understand this subtitle in a few slides...
+
+---
+
+# npm
+
+.highlight[npm] is the package manager for Node.js. The basic commands you need to know are:
+
+.dense[
+```bash
+# Bootstraps the project, creating the package.json
+npm init
+```
+]
+
+.dense[
+```bash
+# Adds a dependency to package.json and installs it locally 
+npm install <package>
+```
+]
+
+.dense[
+```bash
+# Runs a command as defined in the `scripts` section on package.json
+npm run <cmd>
+```
+]
+
+---
+
+# User defined modules
+
+Usually in Node.js applications, you will split the code in multiple files and folders, creating .highlight[modules].
+
+Each module exports whatever it needs, including variables (will be constant) or functions, which can be imported by any other module (as long as there is no circular dependency 👀)
+
+.dense[
+```javascript
+const myVar = "CONSTANT_STUFF"
+
+module.exports = myVar;
+
+// Import with
+const importedVar = require("./path-to-other-module") // "CONSTANT_STUFF"
+
+```
+]
+
+To export multiple values, export an object with a property for each thing you want to share.
+
+---
+
+# Built-in Modules
+
+Node.js includes some modules such as .highlight[fs] and .highlight[path] to help you interact more easily with the file system.
+
+.center[
+```javascript
+const fs = require("fs");
+const path = require("path");
+
+const filePath = path.join(__dirname, <file path relative to file>);
+
+fs.readFile(filePath, "utf8", (err, data) => {
+    // Handle Data
+});
+
+```
+]
+
+Let's see an example...
