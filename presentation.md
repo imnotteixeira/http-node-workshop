@@ -4,27 +4,56 @@ class: center, middle, inverse, small-images
 ## How you can serve a website from your garage and call it a startup
 ![](./img/ni_logo.png)
 
+# 
+
+# 
+
+##### 14 Feb 2021
+
 ---
 class: inverse
 
 # Will this be a boring workshop?
 
-Well that's your call. This is what's going to happen:
-1. Introduction to programming in **Flutter** (e **Dart**)
-2. Overview of the codebase of **uni**
-3. Getting jiggy with it
+Well, let's put it this way:
+1. Sunday afternoon
+1. Valentine's Day (during a pandemic)
+1. Third point
 
-    - Running the app in your phone/emulator
-    - Creating the UI to represent an exam
-    - Viewing and creating fictional exams to understand how the app works
-    - Seeing your exams through your UI
+If you weren't interested, you probably wouldn't be here.
+
+.highlight[Please feel free to interrupt and ask questions, make this more of a conversation and less of a lecture.]
+
+What we have on menu today:
+1. HTTP, REST and Web
+1. JavaScript Theory
+1. Node.js specifics
+1. Node.js in practice
+    * There will be drinks at the end
 
 ---
+class: inverse
 
-# Requirements for this workshop
-Flutter SDK must be installed in the version 1.12.13.
-(If you don't havbe it installed now, you probably won't have the time to do it now 👀)
-![](./flutter-install.png)
+# Your Hosts
+
+<div class="left" style="display: flex; align-items: center; gap: 1em">
+<div><img width=150 src="./img/angelo.jpg" style="display: inline-block; border-radius: 50%"/></div>
+<div>
+    <p class="highlight">Angelo Teixeira</p>
+    <p>MIEIC Finalist</p>
+</div>
+</div>
+
+<div class="right" style="display: flex; align-items: center; gap: 1em;justify-content: flex-end">
+<div>
+    <p class="highlight">Miguel Duarte</p>
+    <p>MIEIC Finalist</p>
+</div>
+<div><img width=150 src="./img/miguel.jpg" style="display: inline-block; border-radius: 50%"/></div>
+
+</div>
+
+
 
 ---
 class: center, middle, inverse
@@ -211,6 +240,29 @@ GET /posts/new # Fetches the latest posts
 
 ---
 
+# API
+
+API (Application Programming Interface) is the specification of methods through which you can interact with a service. Often web applications use REST APIs.
+
+Some common public APIs:
+* Google Maps API https://maps.googleapis.com
+* Twitter API https://api.twitter.com/
+
+---
+
+# HTTP Methods
+
+HTTP has many methods, so we'll only show the most common:
+
+* `GET` Usually used to .highlight[read] or fetch resources. Should not have secondary effects on the server.
+* `POST` Usually used to interact with a resource, often causing a change in state or .highlight[side-effects].
+* `PUT` Usually used to .highlight[create/replace] entities. Should be idempotent - No matter how many times you call it, the result is the same.
+* `PATCH` Usually used to apply partial .highlight[updates] to a resource.
+* `DELETE` Usually used to .highlight[delete] a resource.
+
+
+---
+
 # HTTP Status
 
 Each HTTP Response has an associated Status code.
@@ -220,6 +272,8 @@ Each HTTP Response has an associated Status code.
 * .dense[`3XX`] Redirects
 * .dense[`4XX`] Client error
 * .dense[`5XX`] Server error
+
+Check out https://http.cat!
 
 ---
 
@@ -1038,6 +1092,8 @@ class: center, middle, inverse
 A Drinks Vending machine powered by HTTP.
 
 This application is used to buy drinks on a vending machine, but it lacks implementation, because it was an LGP project and they lost too much time on "Ideation phase" 👀.
+
+You can use .highlight[hoppscotch.io] to test your API in the browser (beware of CORS), or .highlight[Postman] or .highlight[httpie] if you and something running locally.
 
 ---
 
