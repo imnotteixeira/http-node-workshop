@@ -879,3 +879,180 @@ fs.readFile(filePath, "utf8", (err, data) => {
 ]
 
 Let's see an example...
+
+---
+
+class: center, middle, inverse
+
+# Node.js in practice
+## < enter subtitle here >
+
+---
+
+# Express.js
+
+Express.js is a web framework that helps you define the routes of you API. It has a nice feature which are .highlight[middleware] functions.
+
+Middleware runs between the request arrival and the route handler body, so it's useful for validation logic, for example, or some logic you want to run every time you receive a request such as logging.
+
+.dense.center[
+```javascript
+
+const mustBeAValidName = (req,res,next) => {
+    if(req.query.name !== "Alice" && req.query.name !== "Bob") {
+        return next("I only greet Alice and Bob!");
+    } 
+    else next()
+}
+
+app.get("/hello", 
+    mustBeAValidName, 
+    (req,res,next) => {
+        res.status(200).send(`Hello, ${req.query.name}`);
+    }
+)
+```
+]
+
+---
+
+# Express.js
+
+## The Request Handler
+
+.dense.center[
+```javascript
+
+// Also receives query parameters in req.query
+// and body in req.body
+app.get("/hello/:name", 
+    (req,res,next) => {
+        res.status(200).send(`Hello, ${req.param.name}`);
+    }
+)
+```
+]
+
+---
+
+# Databases
+
+In practice, applications use a .highlight[database] to store data permanently. As it is not in the scope of this workshop, let's just say that databases allow CRUD operations (Create, Read, Update, and Delete).
+
+Usually, interacting with them directly is quite verbose so there are frameworks that abstract some of this for the developers.
+
+---
+
+# MongoDB --- Mongoose
+
+One of the used databases is MongoDB. 
+
+MongoDB stores information in "documents", which are similar to JS Objects.
+
+Mongoose lets you define a Model, which defines a structure (Schema) for those entities, and provides utilities to execute the CRUD operations.
+
+---
+# MongoDB --- Mongoose
+
+.dense.center[
+```javascript
+
+const AccountSchema = new Schema({
+    email: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        unique: true,
+        required: true,
+    },
+    password: { type: String, required: true },
+});
+
+const Account = mongoose.model("Account", AccountSchema);
+
+await Account.find();
+await Account.create({email, password});
+```
+]
+
+---
+
+class: center, middle, inverse
+
+# NIJobs
+## A Node.js based API for with job advertisements for students
+
+# 
+
+# 
+
+#### Made by NIAEFEUP
+
+---
+
+# NIJobs
+
+NIJobs uses the concepts introduced so far to expose an API that allows for Companies to have accounts and create offers, which are searchable. Additionally, we have Admins we can oversee operations and take action if needed.
+
+We split the application in two parts: Backend and Frontend
+
+---
+
+# NIJobs --- Backend
+
+The Backend has the following structure:
+
+* src/
+    * api/
+        * routes/ - Methods that register endpoints for the app
+        * middleware/ - Application middleware. For example validators go here
+    * lib/ - Supporting code
+    * loaders/ - Modules responsible for the startup process
+    * models/ - Database entity models (Mongoose models)
+    * services/ - Business logic for the controllers
+    * config/ - Application config (settings, authentication, etc.)
+        * env.js - Environment variables and related configurations
+    * index.js - App entry point
+
+---
+
+# NIJobs --- Frontend
+
+The Frontend is a separate application that is a React app. It is merely a client that makes requests to the API (Backend), and allows us to separate the view logic from the "business" logic.
+
+To learn more about how we do it, check next week's workshop on React ;)
+
+---
+
+class: center, middle, inverse
+
+# Putting the hands in the pasta
+## Direct translations from Portuguese never work...
+
+---
+
+# Hand me That Tasty Peverage
+
+.dense[`git clone https://github.com/NIAEFEUP/workshop-node-2021/`]
+
+A Drinks Vending machine powered by HTTP.
+
+This application is used to buy drinks on a vending machine, but it lacks implementation, because it was an LGP project and they lost too much time on "Ideation phase" 👀.
+
+---
+
+# Hand me That Tasty Peverage
+
+// TODO: Return drinks and their information (price, description, etc.)
+
+// TODO: Get a specific drink's information
+
+// TODO: Purchase units of a drink and reduce stock. Only one drink type at a time.
+
+// TODO: Add stock back to the vending machine! Also only one drink type at a time for now!
+
+// TODO: Edit a drink's description and information (price, etc.)
+
+// TODO: Add a drink to the system
+
+// TODO: Remove a drink from the system

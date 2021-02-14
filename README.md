@@ -21,7 +21,7 @@
   - [x] Using Express to abstract HTTP applications
 ---
 
-- [ ] Javascript theory
+- [x] Javascript theory
   - [x] Functions, variables and scopes
     - [x] const vs let (vs var) 
   - [x] Objects
@@ -41,9 +41,9 @@
     - [x] Common modules (show advent of code exxample - read file and parse lines with promises and array methods)
       - fs
       - path
-- [ ] Node.js in practice
-  - [ ] Express.js
-  - [ ] Mongoose
-  - [ ] How is NIJobs organized?
-    - [ ] Backend
-    - [ ] Frontend - Nice plug for next workshop, not actually explaining details >:)
+- [x] Node.js in practice
+  - [x] Express.js
+  - [x] Mongoose
+  - [x] How is NIJobs organized?
+    - [x] Backend
+    - [x] Frontend - Nice plug for next workshop, not actually explaining details >:)
